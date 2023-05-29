@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 interface Tasks {
   id: string;
-  titile: string;
+  title: string;
   createdAt: number;
 }
 
@@ -14,9 +14,15 @@ interface ToDoStore {
 }
 
 export const ToDoStore = create<ToDoStore>((set, get) => ({
-  tasks: [],
+  tasks: [
+    {
+      id: "asdf",
+      title: "Как можно скорее найти айтишную работу.",
+      createdAt: 134,
+    },
+  ],
   createTask: (title) => {
-    console.log();
+    const { tasks } = get();
   },
   updateTask: (id, title) => {
     console.log();
