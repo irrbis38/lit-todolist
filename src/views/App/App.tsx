@@ -3,8 +3,9 @@ import React from "react";
 import { ToDoStore } from "../../data/store/useToDoStore";
 
 import { InputPlus } from "../components/InputPlus";
+import { TaskItem } from "../components/TaskItem";
 
-import styles from "./index.module.scss";
+import styles from "./App.module.scss";
 
 export const App: React.FC = () => {
   const [tasks, createTask, updateTask, removeTask] = ToDoStore((state) => [
@@ -13,6 +14,8 @@ export const App: React.FC = () => {
     state.updateTask,
     state.removeTask,
   ]);
+  console.log(tasks);
+
   return (
     <section className={styles.todo}>
       <h1 className={styles.todo__title}>TODO App</h1>
@@ -25,7 +28,21 @@ export const App: React.FC = () => {
           }}
         />
       </div>
-      <div className={styles.todo__block}></div>
+      <div className={styles.todo__block}>
+        {!tasks.length ? (
+          <p className={styles.todo__empty}>Tasks list is empty.</p>
+        ) : (
+          tasks.map((task) => (
+            <TaskItem
+              key={task.id}
+              {...task}
+              onDone={removeTask}
+              onEdit={updateTask}
+              onRemove={removeTask}
+            />
+          ))
+        )}
+      </div>
     </section>
   );
 };
