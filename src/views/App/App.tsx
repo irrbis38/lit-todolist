@@ -38,8 +38,7 @@ export const App: React.FC = () => {
             <TaskItem
               key={task.id}
               {...task}
-              onDone={removeTask}
-              onEdit={updateTask}
+              onUpdate={updateTask}
               onRemove={removeTask}
               onComplete={completeTask}
             />
