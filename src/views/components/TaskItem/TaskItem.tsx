@@ -11,5 +11,17 @@ interface TaskItemProps {
 
 export const TaskItem: React.FC<TaskItemProps> = (props) => {
   const { id, title, onDone, onEdit, onRemove } = props;
-  return <div className={styles.task}>{title}</div>;
+  return (
+    <div className={styles.task}>
+      <div className={styles.task__body}>{title}</div>
+      <div className={styles.task__panel}>
+        <button className={styles.task__edit} aria-label="Edit" onClick={() => onEdit(id, title)}>
+          Edit
+        </button>
+        <button className={styles.task__remove} aria-label="Remove" onClick={() => onRemove(id)}>
+          Remove
+        </button>
+      </div>
+    </div>
+  );
 };
