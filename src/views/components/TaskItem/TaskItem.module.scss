@@ -1,0 +1,75 @@
+.task {
+  width: 100%;
+  min-height: 40px;
+  display: grid;
+  grid-template-columns: 1fr 100px;
+  background-color: #dbe2ef;
+  border-radius: 5px;
+  overflow: hidden;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+.task__body {
+  width: 100%;
+  max-width: 390px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  word-wrap: break-word;
+}
+
+.task__label {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+
+  &.task__done {
+    text-decoration: line-through;
+    color: #777;
+  }
+}
+
+.task__checkbox {
+  margin-right: 5px;
+}
+
+.task__panel {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.task__edit,
+.task__remove,
+.task__confirm {
+  display: block;
+  width: 50%;
+  height: 100%;
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  transition: opacity 0.2s ease-out;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.task__edit {
+  background: #ccc url("./images/edit.svg") center no-repeat;
+}
+
+.task__confirm {
+  background: #ccc url("./images/check.svg") center no-repeat;
+}
+
+.task__remove {
+  background: #ccc url("./images/trash.svg") center no-repeat;
+}

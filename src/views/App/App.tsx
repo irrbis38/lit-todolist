@@ -8,13 +8,15 @@ import { TaskItem } from "../components/TaskItem";
 import styles from "./App.module.scss";
 
 export const App: React.FC = () => {
-  const [tasks, createTask, updateTask, removeTask] = ToDoStore((state) => [
-    state.tasks,
-    state.createTask,
-    state.updateTask,
-    state.removeTask,
-  ]);
-  console.log(tasks);
+  const [tasks, createTask, updateTask, removeTask, completeTask] = ToDoStore(
+    (state) => [
+      state.tasks,
+      state.createTask,
+      state.updateTask,
+      state.removeTask,
+      state.completeTask,
+    ]
+  );
 
   return (
     <section className={styles.todo}>
@@ -39,6 +41,7 @@ export const App: React.FC = () => {
               onDone={removeTask}
               onEdit={updateTask}
               onRemove={removeTask}
+              onComplete={completeTask}
             />
           ))
         )}

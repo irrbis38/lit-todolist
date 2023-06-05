@@ -13,6 +13,7 @@ interface ToDoStore {
   createTask: (title: string) => void;
   updateTask: (id: string, title: string) => void;
   removeTask: (id: string) => void;
+  completeTask: (id: string) => void;
 }
 
 export const ToDoStore = create<ToDoStore>((set, get) => ({
@@ -44,6 +45,14 @@ export const ToDoStore = create<ToDoStore>((set, get) => ({
     const { tasks } = get();
     set({
       tasks: tasks.filter((task) => task.id !== id),
+    });
+  },
+  completeTask: (id) => {
+    const { tasks } = get();
+    const completedTask = tasks.filter((task) => task.id === id);
+    const otherTasks = tasks.filter((task) => task.id !== id);
+    set({
+      tasks: [...otherTasks, ...completedTask],
     });
   },
 }));
